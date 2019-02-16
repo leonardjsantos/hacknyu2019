@@ -9,7 +9,7 @@ export default class Bananas extends Component {
     };
     return (
       <View>
-        <Text style={{position: "absolute", top: "50%", left: "50%"}}>Hello</Text>
+        <Text style={{position: "absolute", top: "25%", left: "25%", zIndex: 2, color: "red", fontSize: "100px"}}>Hello</Text>
         <Image source={pic} style={{width: "100%", height: "100%"}}/>
       </View>
     );
