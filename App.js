@@ -1,10 +1,34 @@
 import React, { Component } from 'react';
-import { Alert, Button, AppRegistry, View, Image, FlatList, StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Alert, Button, AppRegistry, View, Image, FlatList, StyleSheet, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 
 export default class FlexDirectionBasics extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
 
-  _onPressButtonTest(){
-    Alert.alert('Test')
+  _onPressButton1D(){
+    Alert.alert('1D')
+  }
+
+  _onPressButton1W(){
+    Alert.alert('1W')
+  }
+
+  _onPressButton1M(){
+    Alert.alert('1M')
+  }
+
+  _onPressButton3M(){
+    Alert.alert('3M')
+  }
+
+  _onPressButton6M(){
+    Alert.alert('6M')
+  }
+
+  _onPressButton1Y(){
+    Alert.alert('1Y')
   }
 
   handleClickHome(){
@@ -15,8 +39,11 @@ export default class FlexDirectionBasics extends Component {
     Alert.alert('Profile')
   }
 
-  handleClickList(){
-    Alert.alert('List')
+  handleClickFeed(){
+    Alert.alert('Feed')
+  }
+  fetchData(){
+    console.log("HERE");
   }
 
 
@@ -35,52 +62,235 @@ export default class FlexDirectionBasics extends Component {
     };
 
 
+
+let buttons;
+for(let i =0; i < 10; i++){
+buttons += <TouchableOpacity onPress={e => this.handleClickHome(e)}>
+  <View>
+    <Text style={{marginTop: 0, fontSize: 40, color: 'blue'}}>
+      Test
+    </Text>
+  </View>
+</TouchableOpacity>
+}
+this.fetchData();
+
+
     return (
-      // Try setting `flexDirection` to `column`.
+
+
       <View style={styles.fullcontainer}>
 
         <View style={styles.container1}>
+        <View style={{padding: 10, width: "85%", marginTop: 10}}>
+          <TextInput
+            style={{height: 40, backgroundColor:"grey", padding: 5, justifyContent: 'center'}}
+            placeholder="ARGENT"
+          />
+        </View>
           <View style={{width: 45, height: 40, backgroundColor: 'white', marginTop: 20, marginRight: 4}} />
         </View>
 
         <View style={styles.container2}>
-          <Image source={pic} style={{width: "80%", height: "80%", marginLeft: '10%', marginTop: '7.5%'}}/>
+          <Image source={pic} style={{width: "70%", height: "80%", marginLeft: '15%', marginTop: '2%'}}/>
+
+          <View style={styles.timeline}>
+            <View style={styles.timeline_button}>
+              <TouchableOpacity style={{height:"100%", width:"100%", justifyContent:'center', flexDirection: 'row'}} onPress={e => this._onPressButton1D(e)}>
+                <Text style={styles.timeline_text}>
+                1D</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.timeline_button}>
+              <TouchableOpacity style={{height:"100%", width:"100%", justifyContent:'center', flexDirection: 'row'}} onPress={e => this._onPressButton1W(e)}>
+              <Text style={styles.timeline_text}>
+                1W</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.timeline_button}>
+              <TouchableOpacity style={{height:"100%", width:"100%", justifyContent:'center', flexDirection: 'row'}} onPress={e => this._onPressButton1M(e)}>
+              <Text style={styles.timeline_text}>
+                1M</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.timeline_button}>
+              <TouchableOpacity style={{height:"100%", width:"100%", justifyContent:'center', flexDirection: 'row'}} onPress={e => this._onPressButton3M(e)}>
+              <Text style={styles.timeline_text}>
+                3M</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.timeline_button}>
+              <TouchableOpacity style={{height:"100%", width:"100%", justifyContent:'center', flexDirection: 'row'}} onPress={e => this._onPressButton6M(e)}>
+              <Text style={styles.timeline_text}>
+                6M</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.timeline_button}>
+              <TouchableOpacity style={{height:"100%", width:"100%", justifyContent:'center', flexDirection: 'row'}} onPress={e => this._onPressButton1Y(e)}>
+              <Text style={styles.timeline_text}>
+                1Y</Text>
+              </TouchableOpacity>
+            </View>
+
+          </View>
         </View>
 
         <View style={styles.container3}>
           <ScrollView>
-
-            <View style={styles.market_row}>
-              <View style={styles.marketbutton}>
-                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
-              </View>
-              <View style={styles.marketbutton}>
-                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
-              </View>
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
             </View>
 
-            <View style={styles.market_row}>
-              <View style={styles.marketbutton}>
-                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
-              </View>
-              <View style={styles.marketbutton}>
-                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
-              </View>
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
             </View>
 
-            <View style={styles.market_row}>
-              <View style={styles.marketbutton}>
-                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
-              </View>
-              <View style={styles.marketbutton}>
-                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
-              </View>
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
             </View>
 
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
 
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.stocksrow_style}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.stocksImage}/>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.newsRow}>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
+                  <Image source={pic4} style={styles.newsImage}/>
+              </TouchableOpacity>
+            </View>
 
           </ScrollView>
-
         </View>
 
         <View style={styles.container4}>
@@ -97,7 +307,7 @@ export default class FlexDirectionBasics extends Component {
           </View>
 
           <View style={styles.container4buttons}>
-            <TouchableOpacity style={{height:"100%", width:"100%"}} onPress={e => this.handleClickList(e)}>
+            <TouchableOpacity style={{height:"100%", width:"100%"}} onPress={e => this.handleClickFeed(e)}>
                 <Image source={pic4} style={{width: "50%", height:"100%", marginLeft: "25%", marginTop: "0.5%"}}/>
             </TouchableOpacity>
           </View>
@@ -110,30 +320,35 @@ export default class FlexDirectionBasics extends Component {
 
 const styles =  StyleSheet.create({
 
+  market_button:{
+    width: "50%",
+    height:"100%",
+    marginLeft: "25%",
+    marginTop: "0.5%"
+  },
 
-  marketbutton:{
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+  market_button_touchable:{
+    height:"100%",
+    width:"45%",
     margin: 10,
     backgroundColor: 'white',
-    padding: 10,
-    width: "40%",
-    color: 'blue'
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
+
+  marketbutton_textbox:{
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
+
 
   market_row:{
     flexDirection: "row",
     justifyContent: "space-evenly",
-    height: "60%",
+    height: "75%",
     // backgroundColor: 'red'
   },
 
-  marketbutton_text:{
-    fontSize: 17,
-    color: 'white',
-    marginTop: 8,
-    justifyContent: 'center'
-  },
   fullcontainer:{
     flex: 1, flexDirection: 'column', backgroundColor:'#DCDCDC', height: '100%', width: '100%'
   },
@@ -142,17 +357,70 @@ const styles =  StyleSheet.create({
     width: '100%', height: '10%', flexDirection: 'row', backgroundColor: '#DCDCDC', justifyContent:'flex-end'
   },
   container2: {
-    width: '100%', height: '38%', backgroundColor: '#DCDCDC'
+    width: '100%', height: '25%', backgroundColor: '#DCDCDC', flexDirection: 'column', paddingBottom: 5
   },
-  container3: {
-    width: '95%', height: '42%', backgroundColor: '#DCDCDC', marginRight: '2.5%', marginLeft:'2.5%', marginTop: -5
+  container3:{
+    width: "100%", height: "53%", backgroundColor: '#DCDCDC'
   },
   container4: {
-    width: '100%', height: '10%', backgroundColor: '#DCDCDC', flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 5
+    width: '100%', height: '12%', backgroundColor: '#DCDCDC', flexDirection: 'row', justifyContent: 'space-evenly', paddingTop: 10
   },
 
   container4buttons:{
-    width: '30%', height: '80%', backgroundColor: 'white', marginTop: 5, justifyContent:'center'
+    width: '30%', height: '80%', backgroundColor: 'white',justifyContent:'center'
+  },
+
+  timeline:{
+    width: "100%", backgroundColor: '#DCDCDC', height: "15%", marginTop: '2%', flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+  },
+
+  timeline_button:{
+    width: 50, height: "100%", backgroundColor: 'white', justifyContent:'center', flexDirection: 'row', borderWidth: 2
+  },
+
+  timeline_text:{
+    fontSize: 15, marginTop: 1
+  },
+
+  stocksrow_style:{
+    margin: "5%",
+    height: 100,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  stocksLeftBox:{
+    height:120, width:"48%", backgroundColor: 'white', marginRight: 10, borderWidth: 2
+  },
+
+  stocksRightBox:{
+    height:120, width:"48%", backgroundColor: 'white', borderWidth: 2
+  },
+
+  stocksImage:{
+    width: "52%", height:"100%", marginLeft: "25%", marginTop: "0.5%"
+  },
+
+  newsRow:{
+    marginTop: "2%",
+    marginBottom: "2%",
+    marginLeft: "7.5%",
+    marginRight: "7.5%",
+    height: 100,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  newsBar:{
+    height:120, width:"100%", backgroundColor: 'white', borderWidth: 2
+  },
+
+  newsImage:{
+    width: "52%", height:"100%", marginLeft: "25%", marginTop: "0.5%"
   }
 
 });
