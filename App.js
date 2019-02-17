@@ -46,8 +46,43 @@ export default class FlexDirectionBasics extends Component {
     console.log("HERE");
   }
 
+  onPressStock(){
+    Alert.alert(
+      'Welcome!',
+      'Would you like to buy or sell this stock?',
+  [
+    {text: 'Buy', onPress: () => console.log('Buy')},
+    {
+      text: 'Cancel',
+      onPress: () => console.log('Cancel Pressed'),
+      style: 'cancel',
+    },
+    {text: 'Sell', onPress: () => console.log('Sell')},
+  ],
+  {cancelable: false},
+);
+  }
+
+  onPressNews(){
+    Alert.alert(
+      'Welcome!',
+      'Would you like to read this article?',
+  [
+    {text: 'Go', onPress: () => console.log('Go')},
+    {
+      text: 'Cancel',
+      onPress: () => console.log('Cancel Pressed'),
+    },
+  ],
+  {cancelable: false},
+);
+  }
+
 
   render() {
+    let search={
+      uri: 'https://cdn3.iconfinder.com/data/icons/wpzoom-developer-icon-set/500/67-512.png'
+    };
     let pic = {
       uri: 'https://www.macrotrends.net/assets/images/thumbnails/mt/2593-1483981336.png'
     };
@@ -58,7 +93,7 @@ export default class FlexDirectionBasics extends Component {
       uri: 'https://cdn1.iconfinder.com/data/icons/avatar-1-2/512/User2-512.png'
     };
     let pic4 = {
-      uri: 'https://static.thenounproject.com/png/101791-200.png'
+      uri: 'https://cdn.iconscout.com/icon/free/png-256/menu-bar-lines-option-list-hamburger-web-6-3228.png'
     };
 
 
@@ -82,13 +117,15 @@ this.fetchData();
       <View style={styles.fullcontainer}>
 
         <View style={styles.container1}>
-        <View style={{padding: 10, width: "85%", marginTop: 10}}>
-          <TextInput
-            style={{height: 40, backgroundColor:"grey", padding: 5, justifyContent: 'center'}}
-            placeholder="ARGENT"
-          />
-        </View>
-          <View style={{width: 45, height: 40, backgroundColor: 'white', marginTop: 20, marginRight: 4}} />
+          <View style={{padding: 10, width: "85%", marginTop: 10}}>
+            <TextInput
+              style={{height: 40, backgroundColor:"#C0C0C0", padding: 5, justifyContent: 'center'}}
+              placeholder="                           ARGENT"
+            />
+          </View>
+          <View style={{width: 45, height: 40, backgroundColor: 'white', marginTop: 20, marginRight: 4}}>
+            <Image source={search} style={{height:"100%", width:"100%"}}/>
+          </View>
         </View>
 
         <View style={styles.container2}>
@@ -141,154 +178,165 @@ this.fetchData();
         <View style={styles.container3}>
           <ScrollView>
             <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderPlus}>TSLA</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>307.88</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentPlus}>↑1.35%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderMinus}>AAPL</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>170.42</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentMinus}>↓0.22%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.onPressNews(e)}>
+                <View style={styles.newsTextBox}>
+                  <Text style={styles.newsText}>"Morgan Stanlet increases FB price target to $190.0"</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderMinus}>GOOG</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>1113.65</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentMinus}>↓0.72%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderMinus}>FB</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>162</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentMinus}>↓0.88%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.onPressNews(e)}>
+                <View style={styles.newsTextBox}>
+                  <Text style={styles.newsText}>"FTC in talks with Facebook regarding multibillion dollar fine"</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderPlus}>MSFT</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>108.22</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentPlus}>↑1.23%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderPlus}>NASDAQ</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>7055.18</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentPlus}>↑0.47%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.onPressNews(e)}>
+                <View style={styles.newsTextBox}>
+                  <Text style={styles.newsText}>"Fire at the Tesla Fremont Factory, nobody injured"</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderPlus}>DOW</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>25.883</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentPlus}>↑1.33%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderPlus}>FORD</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>8.54</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentPlus}>↑1.43%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
+              <TouchableOpacity style={styles.newsBar} onPress={e => this.onPressNews(e)}>
+                <View style={styles.newsTextBox}>
+                  <Text style={styles.newsText}>"Apple primes it's upcoming video services"</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderPlus}>GM</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>39.09</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentPlus}>↑0.49%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.onPressStock(e)}>
+                <View style={styles.stocksInfo}>
+                  <Text style={styles.stocksHeaderMinus}>AMZN</Text>
+                  <View style={styles.stocksPrice_row}>
+                    <Text style={styles.stocksPrice}>1607.95</Text>
+                  </View>
+                  <View style={styles.stocksPercent_row}>
+                    <Text style={styles.stocksPercentMinus}>↓0.91%</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
             </View>
 
-            <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-            </View>
 
-            <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
-              </TouchableOpacity>
-            </View>
 
-            <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-            </View>
 
-            <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.stocksImage}/>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.newsRow}>
-              <TouchableOpacity style={styles.newsBar} onPress={e => this.handleClickFeed(e)}>
-                  <Image source={pic4} style={styles.newsImage}/>
-              </TouchableOpacity>
-            </View>
 
           </ScrollView>
         </View>
@@ -377,11 +425,13 @@ const styles =  StyleSheet.create({
   },
 
   timeline_button:{
-    width: 50, height: "100%", backgroundColor: 'white', justifyContent:'center', flexDirection: 'row', borderWidth: 2
+    width: 50, height: "100%", backgroundColor: 'white', justifyContent:'center', flexDirection: 'row'
+    
   },
 
   timeline_text:{
-    fontSize: 15, marginTop: 1
+    fontSize: 15, marginTop: 1,     fontFamily: 'Cochin'
+
   },
 
   stocksrow_style:{
@@ -393,15 +443,63 @@ const styles =  StyleSheet.create({
   },
 
   stocksLeftBox:{
-    height:120, width:"48%", backgroundColor: 'white', marginRight: 10, borderWidth: 2
+    height:120, width:"48%", backgroundColor: 'white', marginRight: 10, justifyContent: 'center', flexDirection:'row'
   },
 
   stocksRightBox:{
-    height:120, width:"48%", backgroundColor: 'white', borderWidth: 2
+    height:120, width:"48%", backgroundColor: 'white', justifyContent: 'center', flexDirection: 'row'
   },
 
   stocksImage:{
     width: "52%", height:"100%", marginLeft: "25%", marginTop: "0.5%"
+  },
+
+  stocksInfo:{
+    flexDirection: 'column',
+  },
+
+  stocksHeaderPlus:{
+    color: "green",
+    fontSize: 35,
+    marginTop: 10,
+    fontFamily: 'Cochin'
+  },
+
+  stocksHeaderMinus:{
+    color: "red",
+    fontSize: 35,
+    marginTop: 10,
+    fontFamily: 'Cochin'
+  },
+
+  stocksPrice_row:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 5
+  },
+
+  stocksPrice:{
+    color: "#1e90ff",
+    fontSize: 20
+  },
+
+  stocksPercent_row:{
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+
+  stocksPercentPlus:{
+    color: "green",
+    fontSize: 15,
+    fontFamily: 'Cochin'
+
+  },
+
+  stocksPercentMinus:{
+    color: "red",
+    fontSize: 15,
+    fontFamily: 'Cochin'
+
   },
 
   newsRow:{
@@ -416,11 +514,25 @@ const styles =  StyleSheet.create({
   },
 
   newsBar:{
-    height:120, width:"100%", backgroundColor: 'white', borderWidth: 2
+    height:120, width:"100%", backgroundColor: 'white',flexDirection: 'column', justifyContent: 'center'
   },
 
   newsImage:{
     width: "52%", height:"100%", marginLeft: "25%", marginTop: "0.5%"
+  },
+
+  newsTextBox:{
+    margin: 5,
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
+
+  newsText:{
+    fontSize: 20,
+    fontFamily: 'Cochin',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    fontStyle: 'italic'
   }
 
 });
