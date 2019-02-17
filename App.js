@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, Button, AppRegistry, View, Image, FlatList, StyleSheet, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 
-export default class FlexDirectionBasics extends Component {
+export default class argentProject extends Component {
   constructor(props) {
     super(props);
     this.state = {text: ''};
@@ -277,7 +277,7 @@ this.fetchData();
             </View>
 
             <View style={styles.stocksrow_style}>
-              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.onPressStock(e)}>
+              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.onPressStock(e)}>
                 <View style={styles.stocksInfo}>
                   <Text style={styles.stocksHeaderPlus}>DOW</Text>
                   <View style={styles.stocksPrice_row}>
@@ -288,7 +288,7 @@ this.fetchData();
                   </View>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.stocksLeftBox} onPress={e => this.onPressStock(e)}>
+              <TouchableOpacity style={styles.stocksRightBox} onPress={e => this.onPressStock(e)}>
                 <View style={styles.stocksInfo}>
                   <Text style={styles.stocksHeaderPlus}>FORD</Text>
                   <View style={styles.stocksPrice_row}>
@@ -426,7 +426,7 @@ const styles =  StyleSheet.create({
 
   timeline_button:{
     width: 50, height: "100%", backgroundColor: 'white', justifyContent:'center', flexDirection: 'row'
-    
+
   },
 
   timeline_text:{
@@ -538,4 +538,4 @@ const styles =  StyleSheet.create({
 });
 
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => FlexDirectionBasics);
+AppRegistry.registerComponent('argentProject', () => argentProject);
