@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-import { Alert, Button, AppRegistry, View, Image, FlatList, StyleSheet, Text } from 'react-native';
+import { Alert, Button, AppRegistry, View, Image, FlatList, StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 
 export default class FlexDirectionBasics extends Component {
-  _onPressButtonHome(){
+
+  _onPressButtonTest(){
+    Alert.alert('Test')
+  }
+
+  handleClickHome(){
     Alert.alert('Home')
   }
-  _onPressButtonProfile(){
+
+  handleClickProfile(){
     Alert.alert('Profile')
   }
-  _onPressButtonSearch(){
-    Alert.alert('Search')
+
+  handleClickList(){
+    Alert.alert('List')
   }
+
+
   render() {
     let pic = {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+      uri: 'https://www.macrotrends.net/assets/images/thumbnails/mt/2593-1483981336.png'
     };
     let pic2 = {
       uri: 'https://image.flaticon.com/icons/png/512/69/69524.png'
@@ -31,7 +40,7 @@ export default class FlexDirectionBasics extends Component {
       <View style={styles.fullcontainer}>
 
         <View style={styles.container1}>
-          <View style={{width: 45, height: 40, backgroundColor: '#1a8ef3', marginTop: 4, marginRight: 4}} />
+          <View style={{width: 45, height: 40, backgroundColor: 'white', marginTop: 20, marginRight: 4}} />
         </View>
 
         <View style={styles.container2}>
@@ -39,46 +48,58 @@ export default class FlexDirectionBasics extends Component {
         </View>
 
         <View style={styles.container3}>
-          <View style={styles.listcontainer}>
-            <FlatList
-              data={[
-                {key: 'Devin'},
-                {key: 'Jackson'},
-                {key: 'James'},
-                {key: 'Joel'},
-                {key: 'John'},
-                {key: 'Jillian'},
-                {key: 'Jimmy'},
-                {key: 'Julie'},
-                {key: 'Devin2'},
-                {key: 'Jackson2'},
-                {key: 'James2'},
-                {key: 'Joel2'},
-                {key: 'John2'},
-                {key: 'Jillian2'},
-                {key: 'Jimmy2'},
-                {key: 'Julie2'},
-              ]}
-              renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-            />
-          </View>
+          <ScrollView>
+
+            <View style={styles.market_row}>
+              <View style={styles.marketbutton}>
+                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
+              </View>
+              <View style={styles.marketbutton}>
+                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
+              </View>
+            </View>
+
+            <View style={styles.market_row}>
+              <View style={styles.marketbutton}>
+                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
+              </View>
+              <View style={styles.marketbutton}>
+                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
+              </View>
+            </View>
+
+            <View style={styles.market_row}>
+              <View style={styles.marketbutton}>
+                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
+              </View>
+              <View style={styles.marketbutton}>
+                <Button onPress={this._onPressButtonTest} title="Test" color="blue"/>
+              </View>
+            </View>
+
+
+
+          </ScrollView>
+
         </View>
 
         <View style={styles.container4}>
           <View style={styles.container4buttons}>
-            <Button onPress={this._onPressButtonHome} title="Home" color="white">
-              <Image source={pic2} style={{width: "40%", height: "50%", marginLeft: '30%'}}/>
-            </Button>
+            <TouchableOpacity style={{height:"100%", width:"100%"}} onPress={e => this.handleClickHome(e)}>
+                <Image source={pic2} style={{width: "50%", height:"100%", marginLeft: "25%", marginTop: "0.5%"}}/>
+            </TouchableOpacity>
           </View>
+
           <View style={styles.container4buttons}>
-            <Button onPress={this._onPressButtonProfile} title="Profile" color="white">
-              <Image source={pic3} style={{width: "40%", height: "50%", marginLeft: '30%'}}/>
-            </Button>
+            <TouchableOpacity style={{height:"100%", width:"100%"}} onPress={e => this.handleClickProfile(e)}>
+                <Image source={pic3} style={{width: "50%", height:"100%", marginLeft: "25%", marginTop: "0.5%"}}/>
+            </TouchableOpacity>
           </View>
+
           <View style={styles.container4buttons}>
-            <Button onPress={this._onPressButtonSearch} title="Search" color="white">
-              <Image source={pic4} style={{width: "40%", height: "50%", marginLeft: '30%'}}/>
-            </Button>
+            <TouchableOpacity style={{height:"100%", width:"100%"}} onPress={e => this.handleClickList(e)}>
+                <Image source={pic4} style={{width: "50%", height:"100%", marginLeft: "25%", marginTop: "0.5%"}}/>
+            </TouchableOpacity>
           </View>
 
         </View>
@@ -88,41 +109,50 @@ export default class FlexDirectionBasics extends Component {
 };
 
 const styles =  StyleSheet.create({
-  listcontainer: {
-   flex: 1,
-   paddingTop: 10,
-   paddingBottom: 10,
-   paddingRight: 2,
-   paddingLeft: 2
 
-  },
-  item: {
+
+  marketbutton:{
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    margin: 10,
+    backgroundColor: 'white',
     padding: 10,
-    fontSize: 18,
-    height: 44,
-    margin: 2,
-    backgroundColor: '#1a8ef3',
-    color: 'white'
+    width: "40%",
+    color: 'blue'
+  },
+
+  market_row:{
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    height: "60%",
+    // backgroundColor: 'red'
+  },
+
+  marketbutton_text:{
+    fontSize: 17,
+    color: 'white',
+    marginTop: 8,
+    justifyContent: 'center'
   },
   fullcontainer:{
-    flex: 1, flexDirection: 'column', backgroundColor:'black', height: '100%', width: '100%'
+    flex: 1, flexDirection: 'column', backgroundColor:'#DCDCDC', height: '100%', width: '100%'
   },
 
   container1: {
-    width: '100%', height: '8%', flexDirection: 'row', backgroundColor: 'black', justifyContent:'flex-end'
+    width: '100%', height: '10%', flexDirection: 'row', backgroundColor: '#DCDCDC', justifyContent:'flex-end'
   },
   container2: {
-    width: '100%', height: '40%', backgroundColor: 'black'
+    width: '100%', height: '38%', backgroundColor: '#DCDCDC'
   },
   container3: {
-    width: '95%', height: '42%', backgroundColor: 'black', marginRight: '2.5%', marginLeft:'2.5%', marginTop: -5
+    width: '95%', height: '42%', backgroundColor: '#DCDCDC', marginRight: '2.5%', marginLeft:'2.5%', marginTop: -5
   },
   container4: {
-    width: '100%', height: '10%', backgroundColor: 'black', flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 5
+    width: '100%', height: '10%', backgroundColor: '#DCDCDC', flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 5
   },
 
   container4buttons:{
-    width: '30%', height: '80%', backgroundColor: '#1a8ef3', marginTop: 5, justifyContent:'center'
+    width: '30%', height: '80%', backgroundColor: 'white', marginTop: 5, justifyContent:'center'
   }
 
 });
